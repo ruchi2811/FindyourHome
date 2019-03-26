@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:text="Tenant Information"
+            android:textAllCaps="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+
+
+        <ImageView
+            android:id="@+id/editTenantAvatar"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars[0]" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:onClick="getImageFromUser"
+            android:text="Select Picture" />
+
+        <EditText
+            style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:layout_margin="8dp"
+            android:hint="Tenant Name"
+            android:id="@+id/editTenantName"
+            android:padding="8dp" />
+
+        <EditText
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="8dp"
+            android:hint="Contact number"
+            android:id="@+id/editTenantContact"
+            android:padding="8dp" />
+
+        <EditText
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="8dp"
+            android:hint="Email"
+            android:id="@+id/editTenantEmail"
+            android:padding="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:text="Select Flat: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/flatSpinner"
+                android:spinnerMode="dropdown"
+                android:layout_weight="3">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="Generate ID: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTenantId"
+                android:layout_weight="200" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+android:onClick="generateID"
+                android:text="🔄" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="Generate Password: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editPassword"
+                android:layout_weight="200" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="🔄"
+                android:onClick="generatePassword"/>
+
+        </LinearLayout>
+
+        <EditText
+            style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Rent"
+            android:inputType="number"
+            android:background="@null"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/editTenantRent"
+            android:padding="8dp" />
+
+        <EditText
+            style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:textColor="@color/colorPrimary"
+            android:hint="Charges"
+            android:id="@+id/editTenantCharges"
+            android:inputType="number"
+            android:padding="8dp" />
+
+
+    </LinearLayout>
+</ScrollView>

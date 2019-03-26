@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Find your Home</string>
+    <string name="title_activity_tenant_edit">TenantEditActivity</string>
+    <string name="developed"><![CDATA[Developed for Owners and Tenants]]></string>
+</resources>
