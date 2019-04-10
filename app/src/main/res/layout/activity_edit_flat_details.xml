@@ -72,5 +72,7 @@
             android:id="@+id/editFlatAddress"
             android:padding="8dp" />
 
+
+
     </LinearLayout>
 </ScrollView>

@@ -2,13 +2,16 @@ package com.example.ruchi.apartmentdemo.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.provider.ContactsContract;
 import android.widget.Toast;
 
+import com.example.ruchi.apartmentdemo.Activity.OwnerDashboardActivity;
 import com.example.ruchi.apartmentdemo.R;
 
 import java.io.ByteArrayOutputStream;
@@ -37,7 +40,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         return instance;
     }
 
-    private QueryUtility(Context context) {
+    public QueryUtility(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -48,10 +51,12 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.execSQL(CREATE_TENANT_TABLE_QUERY);
         db.execSQL(CREATE_SESSION_TABLE_QUERY);
         db.beginTransaction();
+
         ContentValues sessionValues = new ContentValues();
         sessionValues.put("userID", "null");
         sessionValues.put("password", "null");
         db.insert(SESSION_TABLE, null, sessionValues);
+
         String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Green Villa"};
         String[] flatCities = {"Anand","Ahmedabad", "Vadodara", "Surat"};
         String[] flatAddress = {"Ganesha Residency", "Prestige Manor", "Green City", "Shreepad Antillia"};
@@ -59,6 +64,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         String[] tenantFlats = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Green Villa"};
         String[] tenantIds = {"ananya", "govind", "siva", "raval"};
         String[] tenantEmails = {"ananya@tenant.com", "govind@tenant.com", "shivam@tenant.com", "raval03@tenant.com"};
+
         Bitmap avatar = BitmapFactory.decodeResource(context.getResources(), R.drawable.model);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         avatar.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -67,7 +73,8 @@ public class QueryUtility extends SQLiteOpenHelper{
         byteArrayOutputStream = new ByteArrayOutputStream();
         flatImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] flatImageBlob = byteArrayOutputStream.toByteArray();
-        for (int i = 0; i < 4; i++) {
+
+        for (int i = 0; i < 1; i++) {
             ContentValues tenantValues = new ContentValues();
             tenantValues.put("_id", tenantIds[i]);
             tenantValues.put("name", tenantNames[i]);
@@ -79,6 +86,7 @@ public class QueryUtility extends SQLiteOpenHelper{
             tenantValues.put("charges", 3500);
             tenantValues.put("image", avatarBlob);
             db.insert(TENANTS_TABLE, null, tenantValues);
+
             ContentValues flatValues = new ContentValues();
             flatValues.put("_id", i);
             flatValues.put("name", flatNames[i]);
@@ -173,7 +181,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void insertFlat(int flatId, String flatName, String flatAddress, String flatCity, byte[] avatarBlob) {
+    public void insertFlat(int flatId, String flatName, String flatAddress,String flatCity, byte[] avatarBlob) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues flatValues = new ContentValues();
         flatValues.put("_id", flatId);
@@ -185,6 +193,31 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.insert(FLATS_TABLE, null, flatValues);
         db.setTransactionSuccessful();
         db.endTransaction();
+        db.close();
+    }
+
+    public void deleteFlat(int flatId, String flatName, String flatAddress,String flatCity, byte[] avatarBlob) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues flatValues = new ContentValues();
+        flatValues.put("_id", flatId);
+        flatValues.put("name", flatName);
+        flatValues.put("address", flatAddress);
+        flatValues.put("city", flatCity);
+        flatValues.put("image", avatarBlob);
+        db.beginTransaction();
+        db.delete(FLATS_TABLE, String.valueOf(flatId), null);
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        db.close();
+    }
+    public static QueryUtility getInstance() {
+        return instance;
+    }
+
+    public void deleteOneFlat(int _id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(FLATS_TABLE ,"_id",
+                new String[]{String.valueOf(_id)});
         db.close();
     }
 

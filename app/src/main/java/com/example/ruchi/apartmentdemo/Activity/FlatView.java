@@ -2,6 +2,7 @@ package com.example.ruchi.apartmentdemo.Activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -9,32 +10,43 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ruchi.apartmentdemo.Database.QueryUtility;
 import com.example.ruchi.apartmentdemo.R;
 
 public class FlatView extends AppCompatActivity {
 
-    String flatId;
+    int flatId;
     QueryUtility myQuery;
     TextView viewFlatName, viewFlatCity, viewFlatAddress;
     ImageView viewFlatAvatar;
+    //Button deleteflat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flat_view);
         getSupportActionBar().setTitle("Flat Details");
-        flatId = getIntent().getStringExtra("flatID");
-        viewFlatAddress = findViewById(R.id.viewFlatAddress);
+        //flatId = getIntent().getStringExtra("flatID");
+        flatId = getIntent().getIntExtra("flatID",0);
+        viewFlatCity = findViewById(R.id.viewFlatCity);
         viewFlatAvatar = findViewById(R.id.viewflatAvatar);
         viewFlatName = findViewById(R.id.viewFlatName);
-        viewFlatCity = findViewById(R.id.viewFlatCity);
+        viewFlatAddress = findViewById(R.id.viewFlatAddress);
+        //deleteflat = (Button)findViewById(R.id.delete);
+
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
     }
 
@@ -66,6 +78,25 @@ public class FlatView extends AppCompatActivity {
         finish();
     }
 
+    public void delete(View view) {
+        // call this method
+        QueryUtility.getInstance().deleteOneFlat(flatId);
+        startActivity(new Intent(this, OwnerDashboardActivity.class));
+        finish();
+
+    }
+
+
+
+
+    //public void delete(View view) {
+       // myQuery.deleteFlat(flatId), viewFlatName.getText().toString(), viewFlatAddress.getText().toString(), viewFlatCity.getText().toString(),viewFlatAvatar.toString().getBytes());
+       // Toast.makeText(this, "Successfully deleted a flat", Toast.LENGTH_SHORT).show();
+       // startActivity(new Intent(this, OwnerDashboardActivity.class));
+    //}
+
+
+
     private class GetDatabaseTask extends AsyncTask<Void, Void, QueryUtility> {
 
         @Override
@@ -76,15 +107,22 @@ public class FlatView extends AppCompatActivity {
         @Override
         protected void onPostExecute(QueryUtility queryUtility) {
             myQuery = queryUtility;
-            Cursor cursor = myQuery.getFlatData(Integer.parseInt(flatId));
-            cursor.moveToFirst();
+            Cursor cursor = myQuery.getFlatData(flatId);
+            cursor.moveToLast();
             byte[] byteArray = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
             Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             viewFlatAvatar.setImageBitmap(bm);
             viewFlatName.setText(cursor.getString(cursor.getColumnIndexOrThrow("name")));
             viewFlatCity.setText(cursor.getString(cursor.getColumnIndexOrThrow("city")));
             viewFlatAddress.setText(cursor.getString(cursor.getColumnIndexOrThrow("address")));
+
             cursor.close();
+
+
         }
     }
+
+
+
+
 }

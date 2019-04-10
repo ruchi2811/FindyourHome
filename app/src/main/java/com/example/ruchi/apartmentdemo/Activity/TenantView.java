@@ -120,6 +120,7 @@ public class TenantView extends AppCompatActivity {
 
     public void makePayment(View view) {
         Toast.makeText(this, "Assume the tenant has made payment", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, payment.class));
         billAmount = findViewById(R.id.billAmount);
         billAmount.setText("0");
         view.setEnabled(false);

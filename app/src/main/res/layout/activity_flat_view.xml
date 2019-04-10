@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bac6"
     tools:context=".Activity.FlatView">
 
     <LinearLayout
@@ -19,63 +20,63 @@
 
             <ImageView
                 android:id="@+id/viewflatAvatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
                 android:layout_marginRight="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/viewFlatName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Flat Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="2dp"
+                    android:src="@drawable/ic_location_on_black_24dp" />
 
                 <TextView
-                    android:id="@+id/viewFlatName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:text="Flat Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-
-                <LinearLayout
+                    android:id="@+id/viewFlatAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginRight="2dp"
-                        android:src="@drawable/ic_location_on_black_24dp" />
-
-                    <TextView
-                        android:id="@+id/viewFlatCity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Flat Name"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored" />
-                </LinearLayout>
-
-
+                    android:text="Flat Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored" />
             </LinearLayout>
+
+
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Address"
+            android:text="City"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <TextView
-            android:id="@+id/viewFlatAddress"
+            android:id="@+id/viewFlatCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp"
-            android:text="9900998800"
+            android:text="Flat number, Flat City"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 

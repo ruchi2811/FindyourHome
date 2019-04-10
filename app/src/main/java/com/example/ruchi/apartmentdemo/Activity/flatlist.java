@@ -22,10 +22,10 @@ public class flatlist extends AppCompatActivity {
     };
     String[] flatcity ={
             "Anand",
-            "Ahmedabad",
+            "Vadodara",
             "Vadodara",
             "Surat",
-            "Mumbai"
+            "Surat"
     };
 
     Integer[] imgid={

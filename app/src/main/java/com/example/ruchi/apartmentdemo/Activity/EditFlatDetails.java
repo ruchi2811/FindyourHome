@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,8 @@ public class EditFlatDetails extends AppCompatActivity {
             flatDataCursor = myQuery.getFlatData(null);
             flatDataCursor.moveToLast();
             flatId = flatDataCursor.getInt(flatDataCursor.getColumnIndexOrThrow("_id"));
-            flatId = flatId + 1;
+//            Toast.makeText(EditFlatDetails.this, ""+flatId, Toast.LENGTH_SHORT).show();
+            flatId = flatId + 2;
         }
     }
 
@@ -103,9 +105,15 @@ public class EditFlatDetails extends AppCompatActivity {
                 editFlatAddress.requestFocus();
                 return false;
             }
-            myQuery.insertFlat(flatId, flatName, flatAddress, flatCity, avatarBlob);
-            Toast.makeText(this, "Successfully inserted new flat", Toast.LENGTH_SHORT).show();
+
+
+            myQuery.insertFlat(flatId, flatName, flatAddress, flatCity,avatarBlob);
+            //Toast.makeText(this, "Successfully inserted new flat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Flat ID : " + flatId, Toast.LENGTH_SHORT).show();
+
             startActivity(new Intent(this, OwnerDashboardActivity.class));
+
+
 
 
         }
