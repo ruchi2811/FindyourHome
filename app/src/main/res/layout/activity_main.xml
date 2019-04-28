@@ -4,7 +4,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bac5">
+    android:background="@drawable/skyscrapper">
 
 
     <LinearLayout
@@ -17,6 +17,15 @@
             android:layout_height="wrap_content"
             android:background="@color/primaryDarkColor"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/button_shape"
+                android:onClick="startAboutActivity"
+                android:text="Contact Us" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,17 +56,19 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/primaryColor"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/delius_swash_caps"
-            android:text="Let's get you started"
+            android:text="Who are you?"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/splashSecondaryColor" />
+            android:textColor="@color/back_net_banking"
+            android:textStyle="bold" />
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
@@ -66,7 +77,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
-            android:background="@color/primaryLightColor"
+            android:background="@color/splashPrimaryColor"
             android:onClick="startTenantLoginActivity"
             android:text="I'm a Tenant" />
 
@@ -77,7 +88,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
-            android:background="@color/primaryLightColor"
+            android:background="@color/splashPrimaryColor"
             android:onClick="startOwnerLoginActivity"
             android:text="I'm an owner" />
 
@@ -88,9 +99,20 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
-            android:background="@color/primaryLightColor"
+            android:background="@color/splashPrimaryColor"
             android:onClick="startFindHomeActivity"
-            android:text="Find a Home" />
+            android:text="Home Seeker" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/splashPrimaryColor"
+            android:onClick="startPgFlatActivity"
+            android:text="Looking for office" />
     </LinearLayout>
 
 </ScrollView>

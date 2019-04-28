@@ -80,6 +80,7 @@ public class EditFlatDetails extends AppCompatActivity {
             EditText editFlatName = findViewById(R.id.editFlatName);
             EditText editFlatCity = findViewById(R.id.editFlatCity);
             EditText editFlatAddress = findViewById(R.id.editFlatAddress);
+            EditText editPgAvailability = findViewById(R.id.pgAvailable);
             ImageView editFlatAvatar = findViewById(R.id.editFlatAvatar);
             editFlatAvatar.setDrawingCacheEnabled(true);
             editFlatAvatar.buildDrawingCache();
@@ -89,6 +90,7 @@ public class EditFlatDetails extends AppCompatActivity {
             byte[] avatarBlob = bos.toByteArray();
             String flatName = editFlatName.getText().toString().trim();
             String flatCity = editFlatCity.getText().toString().trim();
+            String pgAvailability = editPgAvailability.getText().toString().trim();
             String flatAddress = editFlatAddress.getText().toString().trim();
             if(flatName.isEmpty()) {
                 editFlatName.setError("Please enter the flat name");
@@ -105,6 +107,13 @@ public class EditFlatDetails extends AppCompatActivity {
                 editFlatAddress.requestFocus();
                 return false;
             }
+
+            if(pgAvailability.isEmpty()) {
+                editPgAvailability.setError("Please enter the availability");
+                editPgAvailability.requestFocus();
+                return false;
+            }
+
 
 
             myQuery.insertFlat(flatId, flatName, flatAddress, flatCity,avatarBlob);

@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bac6">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,38 +40,57 @@
             android:text="Select Picture" />
 
         <EditText
+            android:id="@+id/editFlatName"
             style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
             android:layout_width="match_parent"
-            android:background="@null"
-            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
             android:cursorVisible="true"
-            android:layout_margin="8dp"
             android:hint="Flat Name"
-            android:id="@+id/editFlatName"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary" />
 
         <EditText
-            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="@color/colorPrimary"
-            android:layout_margin="8dp"
-            android:hint="City"
             android:id="@+id/editFlatCity"
-            android:padding="8dp" />
-
-        <EditText
             style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="@color/colorPrimary"
             android:layout_margin="8dp"
-            android:hint="Address"
+            android:background="@null"
+            android:hint="City"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary" />
+
+        <EditText
             android:id="@+id/editFlatAddress"
-            android:padding="8dp" />
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:hint="Address"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:paddingLeft="18dp"
+            android:text="Is Paying Guest option available in this flat?"/>
+
+        <EditText
+            android:id="@+id/pgAvailable"
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:hint="PG availability"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary" />
+
 
 
 

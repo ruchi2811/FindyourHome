@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/darkblue"
+    android:orientation="vertical"
+    tools:context=".Activity.aboutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="16dp">
+
+            <TextView
+                android:layout_width="220dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amita"
+                android:gravity="right"
+                android:text="Contact US"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/uncial_antiqua"
+                android:text="Find your Home"
+                android:textColor="@color/primaryLightColor"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="1dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:id="@+id/phoneimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="2dp"
+                android:paddingTop="10dp"
+                android:paddingRight="2dp"
+                android:outlineAmbientShadowColor="@android:color/holo_green_light"
+                android:outlineSpotShadowColor="@android:color/holo_green_light"
+                android:paddingBottom="2dp"
+                app:srcCompat="@android:drawable/stat_sys_phone_call" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:text="Mobile Number:  "
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:textColor="@android:color/background_light"
+                android:text="9876356214"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="1dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="5dp"
+                android:outlineSpotShadowColor="@android:color/holo_green_light"
+                android:outlineAmbientShadowColor="@android:color/holo_green_light"
+                app:srcCompat="@android:drawable/sym_action_email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:text="Email:  "
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:text="findurhome@gmailcom"
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="1dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="5dp"
+                android:outlineSpotShadowColor="@android:color/holo_green_light"
+                android:outlineAmbientShadowColor="@android:color/holo_green_light"
+                app:srcCompat="@android:drawable/sym_action_email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:text="findurhomewithus@gmail.com"
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="1dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amita"
+                android:text="Renters Question  "
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:onClick="feedback"
+                android:paddingRight="20dp"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="feedback"
+                android:paddingRight="10dp"
+                android:text="Ask your questions"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/button_shape"
+            android:onClick="back"
+            android:text="Back"
+            android:textColor="@android:color/background_light" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+

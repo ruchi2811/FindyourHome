@@ -24,7 +24,7 @@ public class FlatView extends AppCompatActivity {
 
     int flatId;
     QueryUtility myQuery;
-    TextView viewFlatName, viewFlatCity, viewFlatAddress;
+    TextView viewFlatName, viewFlatCity, viewFlatAddress, viewPG;
     ImageView viewFlatAvatar;
     //Button deleteflat;
 
@@ -85,6 +85,10 @@ public class FlatView extends AppCompatActivity {
         finish();
 
     }
+    public void startMapActivity(View view) {
+        startActivity(new Intent(this, MapActivity.class));
+
+    }
 
 
 
@@ -120,6 +124,7 @@ public class FlatView extends AppCompatActivity {
 
 
         }
+
     }
 
 

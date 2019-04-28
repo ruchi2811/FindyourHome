@@ -20,6 +20,7 @@ public class QueryUtility extends SQLiteOpenHelper{
 
     private final static String TENANTS_TABLE = "tenants";
     private final static String FLATS_TABLE = "flats";
+    private final static String PG_TABLE = "pg";
     private final static String SESSION_TABLE = "session";
 
     private final static String DATABASE_NAME = "apartment";
@@ -28,6 +29,7 @@ public class QueryUtility extends SQLiteOpenHelper{
 
     String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (_id int PRIMARY KEY, name text, address text, city text, image blob)";
     String CREATE_SESSION_TABLE_QUERY = "CREATE TABLE " + SESSION_TABLE + " (userID text, password text)";
+    String CREATE_PG_TABLE_QUERY = "CREATE TABLE " + PG_TABLE + "(_id int PRIMARY KEY, name text, address text, city text, image blob)";
     String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (_id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
 
 
@@ -49,6 +51,7 @@ public class QueryUtility extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_FLAT_TABLE_QUERY);
         db.execSQL(CREATE_TENANT_TABLE_QUERY);
+        db.execSQL(CREATE_PG_TABLE_QUERY);
         db.execSQL(CREATE_SESSION_TABLE_QUERY);
         db.beginTransaction();
 
@@ -65,6 +68,10 @@ public class QueryUtility extends SQLiteOpenHelper{
         String[] tenantIds = {"ananya", "govind", "siva", "raval"};
         String[] tenantEmails = {"ananya@tenant.com", "govind@tenant.com", "shivam@tenant.com", "raval03@tenant.com"};
 
+        String[] pgflatNames = {"Shreepad", "Green Avenue", "Raj Palace", "VardhVinayak"};
+        String[] pgflatCities = {"Surat","Surat", "Surat", "Surat"};
+        String[] pgflatAddress = {"Nr.Manohak Arcade, Pal", "Maharana Pratap Marg, Adajan", "Beside Govardhan Palace", "Nr.Saraswati School"};
+
         Bitmap avatar = BitmapFactory.decodeResource(context.getResources(), R.drawable.model);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         avatar.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -73,6 +80,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         byteArrayOutputStream = new ByteArrayOutputStream();
         flatImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] flatImageBlob = byteArrayOutputStream.toByteArray();
+        byte[] pgflatImageBlob = byteArrayOutputStream.toByteArray();
 
         for (int i = 0; i < 1; i++) {
             ContentValues tenantValues = new ContentValues();
@@ -94,6 +102,14 @@ public class QueryUtility extends SQLiteOpenHelper{
             flatValues.put("address", flatAddress[i]);
             flatValues.put("image", flatImageBlob);
             db.insert(FLATS_TABLE, null, flatValues);
+
+            ContentValues pgflatValues = new ContentValues();
+            flatValues.put("_id", i);
+            flatValues.put("name", pgflatNames[i]);
+            flatValues.put("city", pgflatCities[i]);
+            flatValues.put("address", pgflatAddress[i]);
+            flatValues.put("image", pgflatImageBlob);
+            db.insert(PG_TABLE, null, flatValues);
         }
         Toast.makeText(context, "Created new Database", Toast.LENGTH_SHORT).show();
         db.setTransactionSuccessful();
@@ -161,6 +177,26 @@ public class QueryUtility extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor getpgFlatData(String pgName) {
+        Cursor cursor;
+        if (pgName == null) {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats", null);
+        } else {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats WHERE name = '" + pgName + "';", null);
+        }
+        return cursor;
+    }
+
+    public Cursor getpgFlatData(int pgId) {
+        Cursor cursor;
+        if (pgId == 0) {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats", null);
+        } else {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats WHERE _id = '" + pgId + "';", null);
+        }
+        return cursor;
+    }
+
 
     public void insertTenant(String tenantId, String tenantName, String tenantFlatSelection, String tenantContact, String tenantEmail, String tenantPassword, int tenantRent, int tenantCharges, byte[] avatarBlob) {
         SQLiteDatabase db = getWritableDatabase();
@@ -195,6 +231,22 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.endTransaction();
         db.close();
     }
+
+    public void insertpgFlat(int pgId, String pgName, String pgAddress,String pgCity, byte[] avatarBlob) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues pgValues = new ContentValues();
+        pgValues.put("_id", pgId);
+        pgValues.put("name", pgName);
+        pgValues.put("address", pgAddress);
+        pgValues.put("city", pgCity);
+        pgValues.put("image", avatarBlob);
+        db.beginTransaction();
+        db.insert(PG_TABLE, null, pgValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        db.close();
+    }
+
 
     public void deleteFlat(int flatId, String flatName, String flatAddress,String flatCity, byte[] avatarBlob) {
         SQLiteDatabase db = getWritableDatabase();

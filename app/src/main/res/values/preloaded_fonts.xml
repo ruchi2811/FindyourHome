@@ -2,6 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/almendra_sc</item>
+        <item>@font/amita</item>
+        <item>@font/courgette</item>
         <item>@font/delius_swash_caps</item>
         <item>@font/oregano</item>
         <item>@font/uncial_antiqua</item>

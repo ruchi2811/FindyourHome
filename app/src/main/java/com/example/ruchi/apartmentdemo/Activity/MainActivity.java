@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(QueryUtility queryUtility) {
             myQuery = queryUtility;
-            Toast.makeText(MainActivity.this, "Successfully connected to DB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Successfully connected to DB", Toast.LENGTH_SHORT).show();
             //Toast.makeText(MainActivity.this, queryUtility.getSession(), Toast.LENGTH_SHORT).show();
             autoSignIn();
         }
@@ -54,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, Find_a_Home.class));
 
     }
+
+    public void startPgFlatActivity(View view) {
+        startActivity(new Intent(this, office.class));
+
+    }
+    public void startAboutActivity(View view) {
+        startActivity(new Intent(this, aboutActivity.class));
+
+    }
+
     public void autoSignIn() {
 
         if(myQuery.getSession() == null) {

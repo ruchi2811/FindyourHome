@@ -96,6 +96,11 @@ public class TenantView extends AppCompatActivity {
         return true;
     }
 
+    public void otp(View view) {
+        startActivity(new Intent(this, OTP_Main.class));
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -119,7 +124,7 @@ public class TenantView extends AppCompatActivity {
     }
 
     public void makePayment(View view) {
-        Toast.makeText(this, "Assume the tenant has made payment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Please verify your number", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, payment.class));
         billAmount = findViewById(R.id.billAmount);
         billAmount.setText("0");

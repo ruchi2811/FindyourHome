@@ -27,9 +27,10 @@ import com.example.ruchi.apartmentdemo.Database.QueryUtility;
 import com.example.ruchi.apartmentdemo.R;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
-    ListView list, flatListView;
+    ListView list, flatListView, pgflatListView;
     TenantCursorAdapter tenantCursorAdapter;
     FlatCursorAdapter flatCursorAdapter;
+    PgFlatCursorAdapter pgflatCursorAdapter;
     String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Green Villa"};
     String[] tenantNames = {"Ananya Shah", "Govind GS", "Shivam S", "Raval K"};
 
@@ -136,12 +137,18 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             myQuery = queryUtility;
             final Cursor tenantDataCursor = myQuery.getTenantData(null);
             Cursor flatDataCursor = myQuery.getFlatData(null);
+            Cursor pgflatDataCursor = myQuery.getpgFlatData(null);
             list = findViewById(R.id.tenantList);
             tenantCursorAdapter = new TenantCursorAdapter(OwnerDashboardActivity.this, tenantDataCursor);
             list.setAdapter(tenantCursorAdapter);
             flatListView = findViewById(R.id.flatList);
             flatCursorAdapter = new FlatCursorAdapter(OwnerDashboardActivity.this, flatDataCursor);
             flatListView.setAdapter(flatCursorAdapter);
+
+            pgflatCursorAdapter = new PgFlatCursorAdapter(OwnerDashboardActivity.this, pgflatDataCursor);
+            pgflatListView = findViewById(R.id.pglist);
+//            pgflatListView.setAdapter(pgflatCursorAdapter);
+
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -160,6 +167,16 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                     startActivity(flatDetailsIntent);
                 }
             });
+
+//            pgflatListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                    //listener for flat list
+//                    Intent pgflatDetailsIntent = new Intent(OwnerDashboardActivity.this, pgView.class);
+//                    pgflatDetailsIntent.putExtra("pgID", view.getTag().toString());
+//                    startActivity(pgflatDetailsIntent);
+//                }
+//            });
 
 
         }
@@ -242,6 +259,34 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             flatCity.setText(flatCityString);
             avatar.setImageBitmap(bm);
             view.setTag(flatId);
+        }
+    }
+
+    public static class PgFlatCursorAdapter extends CursorAdapter {
+
+        public PgFlatCursorAdapter(Context context, Cursor c) {
+            super(context, c, 0);
+        }
+
+        @Override
+        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+            return LayoutInflater.from(context).inflate(R.layout.custom_pg, parent, false);
+        }
+
+        @Override
+        public void bindView(View view, Context context, Cursor cursor) {
+            TextView pgName = view.findViewById(R.id.pgname);
+            TextView pgCity = view.findViewById(R.id.pgcity);
+            ImageView avatar = view.findViewById(R.id.pgimage);
+            String pgflatNameString = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            String pgflatCityString = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+            String pgId = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
+            byte[] byteArray = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
+            Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            pgName.setText(pgflatNameString);
+            pgCity.setText(pgflatCityString);
+            avatar.setImageBitmap(bm);
+            view.setTag(pgId);
         }
     }
 

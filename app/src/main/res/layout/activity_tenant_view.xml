@@ -163,7 +163,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@color/primaryColor"
-            android:onClick="makePayment"
+            android:onClick="otp"
             android:text="Make Payment" />
 
         <Button

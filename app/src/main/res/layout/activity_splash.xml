@@ -28,7 +28,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/uncial_antiqua"
             android:text="RENT AN APARTMENT"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/primaryLightColor"
             android:textSize="23sp" />
 
         <TextView

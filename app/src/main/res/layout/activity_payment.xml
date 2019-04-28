@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bac7"
     tools:context=".Activity.payment">
 
 
@@ -16,34 +17,34 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/submit_easy_pay"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Learn with Kamal Bunkar"
-                    android:textStyle="bold"
-                    android:textSize="20dip"
-                    android:layout_marginTop="20dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dip"/>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dip"
+                    android:text="Payment with Paytm"
+                    android:textSize="20dip"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="www.blueappsoftware.com"/>
+                    android:text="www.paytm.com" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Paytm Integrations"
-                    android:textStyle="bold"
-                    android:textSize="24dip"
-                    android:layout_marginTop="20dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dip"/>
-
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dip"
+                    android:text="Paytm Integrations"
+                    android:textSize="24dip"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -66,15 +67,16 @@
 
 
             <Button
+                android:id="@+id/start_transaction"
                 android:layout_width="217dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/start_transaction"
-                android:text="Start Payment"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textSize="16dip"
                 android:layout_marginTop="30dip"
-                android:layout_weight="2.05" />
+                android:layout_weight="2.05"
+                android:background="@color/primaryDarkColor"
+                android:text="Start Payment"
+                android:textColor="@color/white"
+                android:textSize="16dip" />
 
         </LinearLayout>
 
